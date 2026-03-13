@@ -394,7 +394,7 @@ themeToggle.addEventListener('click', () => {
 
 // Video Modal Event Listeners
 const videoModal = document.getElementById('video-modal');
-const openVideoBtn = document.getElementById('open-video-modal'); 
+const openVideoBtn = document.getElementById('open-video-modal');
 const closeVideoBtn = document.getElementById('close-video-modal');
 
 if (openVideoBtn) {

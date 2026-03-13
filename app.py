@@ -51,20 +51,18 @@ try:
         html_content = f.read()
 
     # Inject the CSS and JS directly into the HTML string
-    html_content = re.sub(
-        r'<link\s+rel="stylesheet"\s+href="styles\.css[^"]*">',
-        lambda m: f"<style>\\n{css_content}\\n</style>",
-        html_content
+    html_content = html_content.replace(
+        '<link rel="stylesheet" href="styles.css">',
+        f"<style>\n{css_content}\n</style>"
     )
-    html_content = re.sub(
-        r'<script\s+src="script\.js[^"]*"></script>',
-        lambda m: f"<script>\\n{js_content}\\n</script>",
-        html_content
+    html_content = html_content.replace(
+        '<script src="script.js"></script>',
+        f"<script>\n{js_content}\n</script>"
     )
         
-    components.html(html_content, height=900, scrolling=True)
+    components.html(html_content, height=1200, scrolling=True)
 
 except FileNotFoundError as e:
     st.error(f"Error loading files: {e}. Please ensure index.html, styles.css, and script.js are in the same directory as app.py.")
 
-# Trigger reload (v2.1)
+# Trigger reload (v2.2)
