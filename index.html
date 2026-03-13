@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandas Series Visualizer</title>
+    <meta name="description" content="Interactive learning platform for Pandas Series concepts.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <div class="logo-icon">🐼</div>
+                <h1>Pandas<span>Series</span></h1>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-item active" data-topic="creation">
+                    <span class="icon">✨</span> Series Creation
+                </button>
+                <button class="nav-item" data-topic="math">
+                    <span class="icon">🧮</span> Math Operations
+                </button>
+                <button class="nav-item" data-topic="headtail">
+                    <span class="icon">⏮️</span> Head & Tail
+                </button>
+                <button class="nav-item" data-topic="selection">
+                    <span class="icon">🎯</span> Selection & Slicing
+                </button>
+                <button class="nav-item" data-topic="attributes">
+                    <span class="icon">🏷️</span> Attributes
+                </button>
+                <div style="height: 1px; background: var(--border-glass); margin: 0.5rem 0;"></div>
+                <button class="nav-item special-btn" id="open-video-modal" style="color: var(--accent-danger);">
+                    <span class="icon">▶️</span> Video Tutorials
+                </button>
+            </nav>
+            <div class="theme-toggle-container">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-bar glass-panel">
+                <h2 id="topic-title">Series Creation</h2>
+                <p id="topic-description">Understand how to create a Pandas Series from ndarrays, dictionaries, and scalars.</p>
+            </header>
+
+            <div class="workspace">
+                <!-- Code / Controls Panel -->
+                <div class="controls-panel glass-panel" id="main-controls">
+                    <div class="panel-header">
+                        <h3>Interactive Console</h3>
+                    </div>
+                    <div class="code-display" id="code-snippet">
+                        <code>import pandas as pd<br><br># Creating a basic Series<br>s = pd.Series([10, 20, 30, 40])</code>
+                    </div>
+                    <div class="action-buttons" id="action-buttons">
+                        <!-- Buttons injected dynamically by JS -->
+                        <button class="action-btn primary" onclick="renderSeries()">Show Series</button>
+                    </div>
+                </div>
+
+                <!-- Visualization Stage -->
+                <div class="visualization-stage glass-panel" id="main-visualization">
+                    <div class="stage-header">
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <h3>Output Visualization</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Live Syntax and Output Console -->
+                    <div class="action-console" id="action-console">
+                        <div class="console-header">
+                            <div class="console-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="console-title">Python Terminal</div>
+                        </div>
+                        <div class="console-body">
+                            <div class="syntax-line"><span class="prompt">>>></span> <span id="console-syntax" class="typing-text"></span></div>
+                            <div class="output-line" id="console-output"></div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper" id="table-wrapper" style="position: relative; flex-grow: 1; display: flex; flex-direction: column;">
+                        <div style="display: flex; flex-grow: 1;">
+                            <div class="axis-vertical" id="axis-0-overlay">
+                                <span class="axis-label">&darr; Index<br>(Labels)</span>
+                                <div class="axis-line"></div>
+                            </div>
+                            <div class="table-container" id="table-container">
+                                <!-- Series will be rendered here -->
+                                <div class="placeholder-text">Click an action to visualize the Series.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- Video Modal -->
+    <div class="video-modal-overlay" id="video-modal">
+        <div class="video-modal-content glass-panel">
+            <div class="modal-header">
+                <h2>Pandas Series Tutorials</h2>
+                <button class="close-modal" id="close-video-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <h3>Series Creation & Attributes</h3>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/9z_W0eI-01Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-container">
+                    <h3>Series 1D Data</h3>
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/ubvQWUgXhbc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
