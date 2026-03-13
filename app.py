@@ -67,4 +67,4 @@ try:
 except FileNotFoundError as e:
     st.error(f"Error loading files: {e}. Please ensure index.html, styles.css, and script.js are in the same directory as app.py.")
 
-# Trigger reload
+# Trigger reload (v2.1)
